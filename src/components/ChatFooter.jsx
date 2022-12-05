@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState('');
 
-  const handleTyping = () =>
+  const handleTyping = () =>{
     socket.emit('typing', `${localStorage.getItem('userName')} esta escribiendo...`);
+    setTimeout(()=>{dontTyping()},10000)
+  }
+
+
 
   const dontTyping = () =>
     socket.emit('typing', ``);
